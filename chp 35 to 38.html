@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    // Q1
+function currentDateTime(){
+var date$Time=new Date()
+document.write(date$Time+"<br>")
+
+}
+currentDateTime()
+
+//Q2
+
+function fullName(){
+    var firstName=prompt("enter your first name")
+    var lastName=prompt("enter your last name")
+    document.write("Hello"+ " " +firstName+ " " + " "+lastName+"!" +"<br>")
+}
+
+fullName()
+
+//Q3
+
+function sumof(){
+    var num1= parseInt(prompt("enter first number"))
+    var num2= parseInt(prompt("enter second number"))
+    var sum= num1+num2
+    document.write (sum +"<br>")
+}
+
+sumof()
+
+//Q4
+
+ function add(a,b) {
+     return a + b
+ }
+
+ function subtract(a,b) {
+     return a-b
+ }
+function multiply(a,b) {
+     return a * b
+ }
+
+ function divide(a,b) {
+     if (b === 0) {
+         alert("Error: Divison by Zero")
+     }
+     return a / b
+ }
+
+ function calculator() {
+     var num1 = parseInt(prompt("Enter your first number: "))
+     var num2 = parseInt(prompt("Enter your second number: "))
+     var opertors = prompt("Enter your operator: +,-,*,/")
+
+     var result;
+     switch (opertors) {
+         case '+':
+             result = add(num1, num2)
+             break;
+         case '-':
+             result = subtract(num1,num2)
+             break;
+         case '*':
+             result = multiply(num1, num2)
+             break;
+         case '/':
+             result = divide(num1, num2)
+             break;
+         default:
+             alert("Invalid Operator")
+         }
+         alert(`The result is: ${result}`)
+    }
+
+     calculator();
+
+//Q5
+
+function squareNumber(num) {
+    return num * num;
+    
+}
+
+
+  // Example usage
+  var number = 5;
+  var squaredNumber = squareNumber(number);
+  console.log(`The square of ${number} is ${squaredNumber}`);
+
+//Q6
+
+function displayCounting() {
+    // Get values from input fields
+    var   startNum = parseInt(prompt("start number"));
+    var endNum = parseInt(prompt("end number"));
+
+    // Initialize an empty string to store the counting sequence
+    var countingSequence = '';
+
+    // Check if startNum is less than or equal to endNum
+    if (startNum <= endNum) {
+        // Loop from startNum to endNum
+        for (let i = startNum; i <= endNum; i++) {
+            countingSequence += i + ' ';
+        }
+    } else {
+        // If startNum is greater than endNum, loop from startNum down to endNum
+        for (let i = startNum; i >= endNum; i--) {
+            countingSequence += i + ' ';
+        }
+    }
+document.write(countingSequence)
+}
+
+displayCounting()
+
+//Q8
+
+function calculateHypotenuse(base, perpendicular) {
+    function calculateSquare(x) {
+        return x * x;
+    }
+
+     var baseSquare = calculateSquare(base);
+    var perpendicularSquare = calculateSquare(perpendicular);
+    var hypotenuse = Math.sqrt(baseSquare + perpendicularSquare);
+    return hypotenuse;
+}
+
+// Example usage:
+var base = 3;
+var perpendicular = 4;
+console.log(calculateHypotenuse(base, perpendicular));
+
+//Q9
+
+function calculateArea(width, height) {
+    return width * height;
+}
+
+var width = 7;
+var height = 8;
+console.log(calculateArea(width, height));
+
+
+//Q10
+function capitalizeFirstLetter(str) {
+    return str.split(' ').map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+}
+
+// Example usage:
+var exampleString = 'the quick brown fox';
+var result = capitalizeFirstLetter(exampleString);
+console.log(result);  // Output will be 'The Quick Brown Fox'
+//Q12
+
+function findLongestWord(str) {
+    var words = str.split(' ');  // Split the string into an array of words
+    var longestWord = '';  // Initialize an empty string to store the longest word
+
+    for (var word of words) {
+        if (word.length > longestWord.length) {
+            longestWord = word;  // Update the longest word if the current word is longer
+        }
+    }
+
+    return longestWord;  // Return the longest word
+}
+var exampleString = 'Web Development Tutorial';
+var result = findLongestWord(exampleString);
+console.log(result);  // Output will be 'Development'
+
+
+
+
+
+   </script> 
+</body>
+</html>

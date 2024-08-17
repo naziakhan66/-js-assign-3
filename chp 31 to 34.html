@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- Q13 -->
+
+<div class="bill-container">
+  <h2>K-Electric Bill Generator</h2>
+  
+  <label for="customerName">Customer Name:</label>
+  <input type="text" id="customerName" placeholder="Enter customer name">
+  
+  <label for="currentMonth">Current Month:</label>
+  <input type="text" id="currentMonth" placeholder="Enter current month">
+  
+  <label for="units">Number of Units:</label>
+  <input type="number" id="units" placeholder="Enter number of units">
+  
+  <label for="chargePerUnit">Charges Per Unit:</label>
+  <input type="number" id="chargePerUnit" placeholder="Enter charges per unit">
+  
+  <label for="lateFee">Late Payment Surcharge:</label>
+  <input type="number" id="lateFee" placeholder="Enter late payment surcharge">
+  
+  <button onclick="generateBill()">Generate Bill</button>
+
+  <div class="output" id="output"></div>
+</div>
+
+
+
+
+
+
+
+  <script>
+
+ //Q1   
+var date= new Date()
+document.write(date +"<br>" +"<br>")
+
+//Q2
+
+
+// Create an array with the names of the months
+var months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+var currentDate = new Date();
+
+
+var currentMonth = currentDate.getMonth();
+
+// Get the name of the current month from the array
+var monthName = months[currentMonth];
+
+// Alert the current month
+alert("The current month is " + monthName + ".");
+
+//Q3
+
+
+// Create an array with the names of the days
+var days = [
+  "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+];
+
+// Get the current date
+var currentDate = new Date();
+
+// Get the current day (0-6)
+var currentDay = currentDate.getDay();
+
+// Get the first 3 letters of the current day
+var dayName = days[currentDay].slice(0, 3);
+
+// Alert the first 3 letters of the current day
+alert("Today is " + dayName + ".");
+
+//Q4
+
+// Get the current date
+var currentDate = new Date();
+
+// Get the current day (0-6, where 0 is Sunday and 6 is Saturday)
+var currentDay = currentDate.getDay();
+
+// Check if today is Saturday (6) or Sunday (0)
+if (currentDay === 0 || currentDay === 6 ) {
+  alert("It’s Fun day");
+}
+
+//Q5
+
+var currentDate = new Date();
+var currentDay=currentDate.getDate();
+if (currentDay < 16){
+    alert("First fifteen days of the month");
+}
+
+else {
+  alert("Last days of the month");
+}
+
+//Q6
+
+//Create a Date object representing the current date and time
+var now = new Date();
+
+// Get the time in milliseconds since midnight, Jan. 1, 1970
+var millisecondsSince1970 = now.getTime();
+document.write("Milliseconds since 1970 -1-jan"+  millisecondsSince1970 +"<br>")
+
+// Convert milliseconds to minutes
+var minutesSince1970 = Math.floor(millisecondsSince1970 / (1000 * 60));
+
+// Output the result
+document.write("Minutes since midnight, Jan. 1, 1970: " + minutesSince1970 +"<br>");
+
+//Q7
+
+var now = new Date();
+var currentHour = now.getHours();
+
+if (currentHour < 12) {
+  alert("It's AM");
+} else {
+  alert("It's PM");
+}
+
+//Q8
+
+// Create a Date object for December 31, 2020
+var laterDate = new Date(2020, 11, 31);
+
+// Output the date
+document.write("The later date is: " + laterDate +"<br>");
+
+//Q9
+
+// Set the reference date (e.g., the current date)
+var referenceDate = new Date();
+
+// Set the beginning of 2015 (January 1, 2015, at midnight)
+var beginningOf2015 = new Date(2015, 0, 1); // January is 0 (zero-indexed)
+
+// Calculate the time difference in milliseconds
+var timeDifference = referenceDate - beginningOf2015;
+
+
+var secondsElapsed = Math.floor(timeDifference);
+
+// Display the result in the browser
+document.write("Seconds elapsed between the reference date and the beginning of 2015: " + secondsElapsed +"<br>");
+
+//Q 10
+
+// Create a Date object for the current date and time
+var currentDate = new Date();
+
+// Extract the current hours
+var currentHours = currentDate.getHours();
+
+// Set the date object an hour ahead
+currentDate.setHours(currentHours + 1);
+
+// Display the updated date object in the browser
+document.write("1 hour ago it was " + currentDate +"<br>");
+
+//Q11
+
+// Create a Date object for the current date and time
+var currentDate = new Date();
+
+// Calculate the date 100 years back
+currentDate.setFullYear(currentDate.getFullYear() - 100);
+
+// Display the date 100 years back in an alert box
+alert("The date 100 years back is: " + currentDate.toDateString());
+
+//Q12
+
+// Prompt the user to enter their age
+var age =  prompt("Please enter your age:");
+
+// // Ensure the age input is a number
+ age =parseInt(age);
+
+// Get the current year
+var currentYear = new Date().getFullYear();
+
+// Calculate the birth year
+var birthYear = currentYear - age;
+
+// Display the birth year in the browser
+document.write("Your birth year is: " + birthYear);
+
+//Q13
+
+
+function generateBill() {
+    // Get values from input fields
+    const customerName = document.getElementById("customerName").value;
+    const currentMonth = document.getElementById("currentMonth").value;
+    const units = parseFloat(document.getElementById("units").value);
+    const chargePerUnit = parseFloat(document.getElementById("chargePerUnit").value);
+    const lateFee = parseFloat(document.getElementById("lateFee").value);
+
+    // Calculate amounts
+    const netAmountPayable = (units * chargePerUnit).toFixed(2);
+    const grossAmountPayable = (parseFloat(netAmountPayable) + lateFee).toFixed(2);
+
+    // Display the bill details
+    const output = document.getElementById("output");
+    output.innerHTML = `
+        <h3>Bill Details</h3>
+        <p><strong>Customer Name:</strong> ${customerName}</p>
+        <p><strong>Current Month:</strong> ${currentMonth}</p>
+        <p><strong>Number of Units:</strong> ${units}</p>
+        <p><strong>Charges Per Unit:</strong> $${chargePerUnit.toFixed(2)}</p>
+        <p><strong>Net Amount Payable (within Due Date):</strong> $${netAmountPayable}</p>
+        <p><strong>Late Payment Surcharge:</strong> $${lateFee.toFixed(2)}</p>
+        <p><strong>Gross Amount Payable (after Due Date):</strong> $${grossAmountPayable}</p>
+    `;
+}
+
+
+
+  </script>  
+</body>
+</html>
